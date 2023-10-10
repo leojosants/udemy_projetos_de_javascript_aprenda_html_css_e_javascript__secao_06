@@ -4,10 +4,17 @@ const elementPreviousBtn = document.querySelector('#previous_btn');
 const elementNextBtn = document.querySelector('#next_btn');
 
 let progress = 0;
+let saved_progress = Number(localStorage.getItem("progress"));
+
+if (saved_progress) {
+  progress = saved_progress;
+  updateProgressBar();
+};
 
 /* functions */
 function updateProgressBar() {
     elementProgressBar.style.width = progress + '%';
+    localStorage.setItem('progress', progress);
 };
 
 function nextStep() {
